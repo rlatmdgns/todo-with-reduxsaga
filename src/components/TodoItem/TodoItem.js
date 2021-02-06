@@ -6,18 +6,22 @@ const TodoItem = ({todo}) => {
   const dispatch = useDispatch();
   
   const deleteTodoClick = useCallback((e) => {
-    const targetId =e.target.parentNode.dataset.id;
-    console.log(targetId)
-    // dispatch(deleteTodo(targetId))
+    e.stopPropagation();
+    dispatch(deleteTodo(todo.id))
   },[])
 
   const updateTodoClick = (e) => {
-    const targetId =e.target.parentNode.dataset.id;
-    dispatch(updateTodo(targetId))
+    dispatch(updateTodo(todo.id))
   }
+  // const data = state.todos.map(todo => {
+  //   if(todo.id===action.data){
+  //     todo.checked = !todo.checked
+  //     return todo
+  //   }
+  // });
   return (
     <li data-id={todo.id}>
-      <Label label onClick={updateTodoClick} checked={todo.check} ><input type="checkbox" checked={todo.check}/>{todo.content}</Label>
+      <Label label checked={todo.checked}><input type="checkbox" checked={todo.checked} onClick={updateTodoClick} />{todo.content}</Label>
       <button type="button" onClick={deleteTodoClick}>삭제</button>
     </li>
   )

@@ -17,20 +17,23 @@ export const initalState = {
 const reducer = (state = initalState, action) =>{
   switch(action.type){
     case ADD_TODO :
-      console.log(state);
     return{
         ...state,
         todos:[action.data, ...state.todos]
       };
     case DELETE_TODO :
-      console.log(action);
       return{
-        ...state
+        ...state,
+        todos:state.todos.filter((todo) => (todo.id !== action.data)),
       };
-    case UPDATE_TODO :
-      console.log(action);
-      return{
-        ...state
+    case UPDATE_TODO : 
+      return {
+        ...state,
+        todos:state.todos.map((todo) => 
+          todo.id === action.data
+            ? {...todo, checked:!todo.checked} 
+            : todo
+        )
       };
     default:
       return state;

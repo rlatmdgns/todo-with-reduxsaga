@@ -11,8 +11,8 @@
 // export const UPDATE_TODO_FAIL = "UPDATE_TODO_FAIL";
 
 export const ADD_TODO = "ADD_TODO";
-export const DELETE_TODO = "ADD_TODO";
-export const UPDATE_TODO = "ADD_TODO";
+export const DELETE_TODO = "DELETE_TODO";
+export const UPDATE_TODO = "UPDATE_TODO";
 
 
 export const addTodo = (data) => ({
@@ -26,6 +26,6 @@ export const deleteTodo = (data) => ({
 })
 
 export const updateTodo = (data) => ({
-  type:ADD_TODO,
+  type:UPDATE_TODO,
   data
 })
