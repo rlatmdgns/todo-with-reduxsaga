@@ -5,14 +5,13 @@ import {deleteTodo, updateTodo} from '../../actions';
 const TodoItem = ({todo}) => {
   const dispatch = useDispatch();
   
-  const deleteTodoClick = useCallback((e) => {
-    e.stopPropagation();
+  const deleteTodoClick = useCallback(() => {
     dispatch(deleteTodo(todo.id))
-  },[])
+  },[todo])
 
-  const updateTodoClick = (e) => {
+  const updateTodoClick = useCallback(() => {
     dispatch(updateTodo(todo.id))
-  }
+  }, [todo])
   // const data = state.todos.map(todo => {
   //   if(todo.id===action.data){
   //     todo.checked = !todo.checked
